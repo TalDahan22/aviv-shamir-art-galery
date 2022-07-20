@@ -4,12 +4,15 @@ import "../styles/globals.css";
 import "@glidejs/glide/src/assets/sass/glide.core.scss";
 import ProductContext from "./context/ProductContext";
 import { useContext, useEffect, useState } from "react";
+import Cart from "../components/cart/Cart";
 // import { Collection } from "mongoose";
 
 function Layout({ children }) {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [orginProducts, setOriginProducts] = useState([]);
+  const [cartArray, setCartArray] = useState([]);
+
   useEffect(() => {
     fetch("/api/product")
       .then((res) => res.json())
@@ -27,15 +30,6 @@ function Layout({ children }) {
         );
       });
   }, []);
-  function updateCart(id) {
-    const newItem = products.find((product) => product.id === id);
-    setCartArray([...cartArray, newItem]);
-  }
-
-  function removeProduct(id) {
-    const newArray = cartArray.filter((product) => product.id !== id);
-    setCartArray(newArray);
-  }
 
   const changeProducts = (category) => {
     setProducts(
@@ -46,13 +40,33 @@ function Layout({ children }) {
   };
 
   async function changeProductsHolder(value) {
-    const res = await fetch("/api/category", {
-      body: JSON.stringify({ categoryId: value }),
-      method: "POST",
-    });
-    const data = await res.json();
-    console.log("data", data);
-    changeProducts(data);
+    if (value === "allcollections") changeProducts("All Collections");
+    else {
+      const res = await fetch("/api/category", {
+        body: JSON.stringify({ categoryId: value }),
+        method: "POST",
+      });
+      const data = await res.json();
+      console.log("data", data);
+      changeProducts(data);
+    }
+  }
+
+  function updateCart(product) {
+    const existingProduct = cartArray.find(
+      (cartProduct) => cartProduct._id === product._id
+    );
+    if (existingProduct) {
+      setCartArray(
+        cartArray.map((cartProduct) =>
+          cartProduct._id === product._id
+            ? { ...existingProduct, amount: existingProduct.amount + 1 }
+            : cartProduct
+        )
+      );
+    } else {
+      setCartArray((prevCart) => [...prevCart, { ...product, amount: 1 }]);
+    }
   }
 
   return (
@@ -60,11 +74,12 @@ function Layout({ children }) {
       value={{
         products,
         setProducts,
-        updateCart,
-        removeProduct,
         categories,
         changeProducts,
         changeProductsHolder,
+        updateCart,
+        cartArray,
+        setCartArray,
       }}
     >
       {children}
@@ -73,11 +88,14 @@ function Layout({ children }) {
 }
 
 function MyApp({ Component, pageProps }) {
+  const [showDrawer, setShowDrawer] = useState(false);
   return (
     <Layout>
       <div className="pageContainer">
         <div className="containerWrap">
-          <Header></Header>
+          <Cart setShowDrawer={setShowDrawer} showDrawer={showDrawer} />
+
+          <Header setShowDrawer={setShowDrawer}></Header>
           <Component {...pageProps} />
           <Footer />
         </div>

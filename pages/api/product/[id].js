@@ -2,6 +2,7 @@ import connectDB from "../../../middleware/mongodb";
 import Product from "../../../models/product";
 
 const handler = async (req, res) => {
+ 
   console.log("req.method", req.method);
   if (req.method === "POST") {
     const { category, price, image } = req.body;

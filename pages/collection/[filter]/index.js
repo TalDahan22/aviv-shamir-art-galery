@@ -15,7 +15,6 @@ const FilterdCollections = () => {
   useEffect(() => {
     changeProductsHolder(filter);
     console.log(filter);
-    setProducts(products);
   }, [filter]);
 
   return (
