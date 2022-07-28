@@ -18,10 +18,7 @@ const client = new Schema({
     type: Date,
     default: Date.now,
   },
-  creditCard: {
-    type: Number,
-    required: true,
-  },
+
 });
 
 mongoose.models = {};

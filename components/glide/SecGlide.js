@@ -13,7 +13,9 @@ const images = [
 export default function SecGlide({ id }) {
   useEffect(() => {
     const glide = new Glide(`.glide${id}`, {
-      perView: 3,
+      perView: 4,
+      autoplay: 2000,
+
     });
 
     glide.mount();
@@ -31,14 +33,9 @@ export default function SecGlide({ id }) {
             ))}
           </ul>
         </div>
-        <div className="glide__arrows" data-glide-el="controls">
-          <button className="arrowLeft" data-glide-dir="<">
-            prev
-          </button>
-          <button className="arrowright" data-glide-dir=">">
-            next
-          </button>
-        </div>
+        {/* <Arrows> */}
+       
+        {/* </Arrows> */}
       </div>
     </div>
   );

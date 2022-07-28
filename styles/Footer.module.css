@@ -3,9 +3,17 @@
     position: relative;
     bottom: 0;
     width: 100%;
-
+    overflow: hidden;
+  background-color: rgb(163, 69, 69);
+  text-align: center;
+color:aliceblue;
+  
 }
 
 .containerWrap{
+    display: flex;
+      flex-direction: column;
     flex:1;
+    padding: 2rem 0;
+
 }

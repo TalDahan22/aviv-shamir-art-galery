@@ -4,46 +4,31 @@ import { styled } from "@mui/material/styles";
 import { createTheme } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
 import Upload from "../components/uploadPic/Upload";
-
+import { useContext } from "react";
+import ProductContext from "./context/ProductContext";
+import styles from "../styles/Portrates.module.css"
 function Portrates() {
-  // const Input = styled("input")({
-  //   display: "none",
-  // });
 
-  // const theme = createTheme({
-  //   palette: {
-  //     primary: {
-  //       main: purple[500],
-  //     },
-  //     secondary: {
-  //       main: "#f44336",
-  //     },
-  //   },
-  // });
+
+  const { cartArray } = useContext(ProductContext);
 
   return (
     <>
       <h1>get your own portrate </h1>
-      <div>
+      <div className={styles.App }>
         <Upload />
-        {/* <Stack direction="row" alignItems="center" spacing={2}>
-          <label htmlFor="contained-button-file">
-            <Input
-              accept="image/*"
-              id="contained-button-file"
-              type="file"
-              onChange={(e, v) => console.log(e.target.files[0])}
-            />
-            <Button variant="contained" component="span">
-              Upload a Photo
-            </Button>
-          </label>
-        </Stack> */}
+       
         <button>choose background color</button>
         <button>choose text (optional)</button>
-      </div>
-      <div>pic</div>
-      <button>add to cart</button>
+      <button
+              onClick={() => {
+                updateCart(product._id);
+              }}
+              >
+              add to cart
+            </button>
+              </div>
+            
     </>
   );
 }

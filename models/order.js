@@ -4,8 +4,8 @@ import Product from "./product";
 const Schema = mongoose.Schema;
 
 const order = new Schema({
-  products: [{ type: Schema.Types.ObjectId, ref: Product }],
-  client: [{ type: Schema.Types.ObjectId, ref: Client }],
+  products: Array,
+  client: { type: Schema.Types.ObjectId, ref: Client },
   date: {
     type: Date,
     default: Date.now,

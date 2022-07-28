@@ -2,10 +2,12 @@ import Footer from "../components/footer/Footer";
 import Header from "../components/header/Header";
 import "../styles/globals.css";
 import "@glidejs/glide/src/assets/sass/glide.core.scss";
+import "@glidejs/glide/src/assets/sass/glide.theme.scss";
 import ProductContext from "./context/ProductContext";
 import { useContext, useEffect, useState } from "react";
 import Cart from "../components/cart/Cart";
-// import { Collection } from "mongoose";
+import { SessionProvider } from "next-auth/react";
+import Client from "../models/client";
 
 function Layout({ children }) {
   const [products, setProducts] = useState([]);
@@ -39,6 +41,7 @@ function Layout({ children }) {
     );
   };
 
+
   async function changeProductsHolder(value) {
     if (value === "allcollections") changeProducts("All Collections");
     else {
@@ -69,6 +72,11 @@ function Layout({ children }) {
     }
   }
 
+  function removeProduct(id) {
+    const newArray = cartArray.filter((product) => product._id !== id);
+    setCartArray(newArray);
+  }
+
   return (
     <ProductContext.Provider
       value={{
@@ -80,6 +88,8 @@ function Layout({ children }) {
         updateCart,
         cartArray,
         setCartArray,
+        removeProduct,
+      
       }}
     >
       {children}
@@ -87,20 +97,22 @@ function Layout({ children }) {
   );
 }
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, session }) {
   const [showDrawer, setShowDrawer] = useState(false);
   return (
-    <Layout>
-      <div className="pageContainer">
-        <div className="containerWrap">
-          <Cart setShowDrawer={setShowDrawer} showDrawer={showDrawer} />
+    <SessionProvider session={session}>
+      <Layout>
+        <div className="pageContainer">
+          <div className="containerWrap">
+            <Cart setShowDrawer={setShowDrawer} showDrawer={showDrawer} />
 
-          <Header setShowDrawer={setShowDrawer}></Header>
-          <Component {...pageProps} />
-          <Footer />
+            <Header setShowDrawer={setShowDrawer}></Header>
+            <Component {...pageProps} />
+            <Footer />
+          </div>
         </div>
-      </div>
-    </Layout>
+      </Layout>
+    </SessionProvider>
   );
 }
 

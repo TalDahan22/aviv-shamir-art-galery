@@ -1,10 +1,9 @@
 import { useEffect } from "react";
 import Glide from "@glidejs/glide";
-
 import Image from "next/image";
 
 const images = [
- "https://res.cloudinary.com/taldahan/image/upload/v1657644515/Untitled_Artwork_31_ktgecu.png",
+  "https://res.cloudinary.com/taldahan/image/upload/v1657644515/Untitled_Artwork_31_ktgecu.png",
   "https://res.cloudinary.com/taldahan/image/upload/v1657532017/26137ede-f8be-4db5-ad23-02ed4359a347_rw_1920_ql2kak.jpg",
   "https://res.cloudinary.com/taldahan/image/upload/v1657531903/1657357359810_g2w8j2.jpg",
   "https://res.cloudinary.com/taldahan/image/upload/v1657531903/1657009520474_mvpqmr.jpg",
@@ -21,6 +20,7 @@ export default function BigGlide() {
         // type: "carousel",
         autoplay: 2000,
         gap: 10,
+
       }).mount();
       glide.play();
     };
@@ -39,6 +39,7 @@ export default function BigGlide() {
             ))}
           </ul>
         </div>
+        {/* <Arrows> */}
         <div className="glide__arrows" data-glide-el="controls">
           <button
             className="glide__arrow glide__arrow--left"
@@ -53,6 +54,7 @@ export default function BigGlide() {
             next
           </button>
         </div>
+        {/* </Arrows> */}
       </div>
     </div>
   );

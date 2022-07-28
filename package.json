@@ -9,17 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.2.4",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@glidejs/glide": "^3.5.2",
+    "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.8.7",
+    "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
+    "framer-motion": "^6.5.1",
     "mongoose": "^6.4.2",
     "next": "12.2.0",
+    "next-auth": "^4.10.2",
+    "nodemailer": "^6.7.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.33.1",
     "react-slideshow-image": "^3.7.5",
-    "sass": "^1.53.0"
+    "sass": "^1.53.0",
+    "stripe": "^9.14.0"
   },
   "devDependencies": {
     "eslint": "8.18.0",

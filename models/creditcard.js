@@ -1,29 +1,29 @@
-import mongoose from "mongoose";
-const Schema = mongoose.Schema;
+// import mongoose from "mongoose";
+// const Schema = mongoose.Schema;
 
-const creditCard = new Schema({
-  creditNumber: {
-    type: Number,
-    required: true,
-  },
-  expiritionDate: {
-    type: Date,
-    default:Date.now,
-    required: true,
-  },
-  cvvNumber: {
-    type: Number,
-    required: true,
-  },
+// const creditCard = new Schema({
+//   creditNumber: {
+//     type: Number,
+//     required: true,
+//   },
+//   expiritionDate: {
+//     type: Date,
+//     default:Date.now,
+//     required: true,
+//   },
+//   cvvNumber: {
+//     type: Number,
+//     required: true,
+//   },
  
-  personIDnumber: {
-    type: Number,
-    required: true,
-  },
-});
+//   personIDnumber: {
+//     type: Number,
+//     required: true,
+//   },
+// });
 
-mongoose.models = {};
+// mongoose.models = {};
 
-const CreditCard = mongoose.model("CreditCard", creditCard);
+// const CreditCard = mongoose.model("CreditCard", creditCard);
 
-export default CreditCard;
+// export default CreditCard;

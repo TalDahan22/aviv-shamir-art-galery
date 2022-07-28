@@ -11,7 +11,7 @@ const images = [
 export default function GlideComponent({ id }) {
   useEffect(() => {
     const glide = new Glide(`.glide${id}`, {
-      perView: 3,
+      perView: 4,
     });
 
     glide.mount();
@@ -24,19 +24,15 @@ export default function GlideComponent({ id }) {
           <ul className="glide__slides">
             {images.map((src) => (
               <li key={src} className="glide__slide">
-                {<Image src={src} alt={src} width={250} height={250} />}
+                {<Image src={src} alt={src} width={250} height={250} 
+  />}
               </li>
             ))}
           </ul>
         </div>
-        <div className="glide__arrows" data-glide-el="controls">
-          <button className="arrowLeft" data-glide-dir="<">
-            prev
-          </button>
-          <button className="arrowright" data-glide-dir=">">
-            next
-          </button>
-        </div>
+        {/* <Arrows> */}
+       
+        {/* </Arrows> */}
       </div>
     </div>
   );

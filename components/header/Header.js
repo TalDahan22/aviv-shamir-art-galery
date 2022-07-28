@@ -5,28 +5,28 @@ import { useContext } from "react";
 import ProductContext from "../../pages/context/ProductContext";
 import { get } from "mongoose";
 import { useRouter } from "next/router";
-
+import Login from "../login/login";
+import InstagramIcon from '@mui/icons-material/Instagram';
 const Header = ({ setShowDrawer }) => {
   const { categories, changeProductsHolder } = useContext(ProductContext);
   const router = useRouter();
 
   return (
-    <div className={styles.container}>
-      <Link href="https://instagram.com/aviv_shamir_illustration?igshid=YmMyMTA2M2Y=">
-        <button className={styles.btns}>find me on instagram!</button>
-      </Link>
-      <Link href="/">
-        <button className={styles.btns}>Home</button>
-      </Link>
-      <div className={styles.btns}>
-        <div className="collections">
-          <label>collections</label>
-          <select
+<div className={styles.navbar}>
+  <Link href="/">Home</Link>
+  <Login/>
+  <div className={styles.dropdown}>
+    <button className={styles.dropbtn}> 
+     ALL COLLECTIONS
+    </button>
+    <div className={styles.dropdownContact}>
+   
+          <select className={styles.dropbtn}
             onChange={(e) => {
               router.push(`/collection/${e.target.value}`);
             }}
           >
-            <option disabled>Choose Category </option>
+            <option disabled >Choose Category </option>
             <option value="allcollections">All Collections</option>
             {categories.map((category) => {
               return (
@@ -36,20 +36,26 @@ const Header = ({ setShowDrawer }) => {
               );
             })}
           </select>
-        </div>
-      </div>
-      <Link href="/portrates">
-        <button className={styles.btns}>your own portrate!</button>
-      </Link>
-
-      <button onClick={() => setShowDrawer(true)} className={styles.btns}>
-        cart
-      </button>
-
-      <Link href="/about">
-        <button className={styles.btns}>about</button>
-      </Link>
     </div>
+  </div> 
+          <Link href="/portrates"  className={styles.dropbtn}>
+       your own portrate!
+      </Link>
+      
+      <a className={styles.dropbtn} onClick={() => setShowDrawer(true)} >
+        cart
+      </a>
+      <Link className={styles.btns} href="/about">
+        about
+      </Link>
+      <Link href="https://instagram.com/aviv_shamir_illustration?igshid=YmMyMTA2M2Y=">
+<InstagramIcon/>
+      </Link>
+</div>
+
+
+
+  
   );
 };
 

@@ -1,10 +1,10 @@
 import { useEffect, useState, useContext } from "react";
 import Card from "@mui/material/Card";
 import { CardContent, CardHeader, CardMedia, Grid } from "@mui/material";
-import "../../styles/Product.module.css";
+import styles from  "../../styles/Product.module.css";
 import { useRouter } from "next/router";
 import ProductContext from "../context/ProductContext";
-
+import AddRoundedIcon from '@mui/icons-material/AddRounded';
 const ProductDetails = () => {
 
   const { updateCart } = useContext(ProductContext);
@@ -23,7 +23,7 @@ const ProductDetails = () => {
   }, [id]);
   return (
     <Grid container justifyContent={"center"}>
-      <Card sx={{ maxWidth: 360 }}>
+      <Card  className={styles.productCard} sx={{ maxWidth: 360 }}>
         <CardHeader title={showProduct.title} />
         <CardMedia
           image={showProduct.image}
@@ -32,20 +32,20 @@ const ProductDetails = () => {
           height="500"
         ></CardMedia>
         <CardContent>
-          <div className="product-info">
+          <div className={styles.productInfo}>
             <h5>{showProduct.title}</h5>
             <h6>{showProduct.price}</h6>
             <h6>{showProduct.description}</h6>
             <h6>{showProduct.category}</h6>
           </div>
         </CardContent>
-        <button
+        <AddRoundedIcon
           onClick={() => {
             updateCart(showProduct);
           }}
         >
           add to cart
-        </button>
+        </AddRoundedIcon>
       </Card>
     </Grid>
   );
