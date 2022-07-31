@@ -3,7 +3,7 @@ import Client from "../../models/client";
 
 const postClientToDB = async (req, res) => {
   if (req.method === "POST") {
-    const { name, email, password } = req.body;
+    const { name, email, adress } = req.body;
     try {
       const clientUser = new Client({
         name,

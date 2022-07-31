@@ -19,7 +19,7 @@ export default function Form({ addOrder }) {
     addOrder();
     let config = {
       method: "POST",
-      url: `${process.env.NEXT_PUBLIC_API_URL}/api/clientUser`,
+      url: `/api/clientUser`,
       headers: { "Content-Type": "application/json" },
       data: values,
     };
@@ -121,10 +121,9 @@ export default function Form({ addOrder }) {
               placeholder="adress"
             />
           </div>
-        <div>
-          <button>Submit</button>
-        </div>
-
+          <div>
+            <button>Submit</button>
+          </div>
         </form>
       </div>
     </div>
