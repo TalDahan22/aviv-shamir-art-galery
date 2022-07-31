@@ -5,7 +5,7 @@ import { createTheme } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
 import Upload from "../components/uploadPic/Upload";
 import { useContext } from "react";
-import ProductContext from "./context/ProductContext";
+import ProductContext from "../context/ProductContext";
 import styles from "../styles/portrates.module.css";
 function Portrates() {
   const { cartArray } = useContext(ProductContext);

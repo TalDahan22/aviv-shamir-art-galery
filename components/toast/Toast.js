@@ -1,4 +1,4 @@
-import { useToastDispatchContext } from "../../pages/context/ToastContext";
+import { useToastDispatchContext } from "../../context/ToastContext";
 
 export default function Toast({ type, message, id }) {
   const dispatch = useToastDispatchContext();

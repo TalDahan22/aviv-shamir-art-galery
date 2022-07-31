@@ -3,7 +3,7 @@ import { CardContent, CardHeader, CardMedia, Grid } from "@mui/material";
 import styles from "../../styles/Cart.module.css";
 import Card from "@mui/material/Card";
 import { useContext, useState } from "react";
-import ProductContext from "../../pages/context/ProductContext";
+import ProductContext from "../../context/ProductContext";
 import clientUser from "../../pages/api/clientUser";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";

@@ -1,5 +1,5 @@
 import Toast from "../toast/Toast";
-import { useToastStateContext } from '../../pages/context/ToastContext';
+import { useToastStateContext } from '../../context/ToastContext';
 
 export default function ToastContainer() {
   const { toasts } = useToastStateContext();
