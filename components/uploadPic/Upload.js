@@ -1,7 +1,7 @@
 import { useState } from "react";
-import styles from "../../styles/upload.module.css";
+import styles from "../../styles/Upload.module.css";
 import Image from "next/dist/client/image";
-import { width } from "@mui/system";
+
 function Upload() {
   const [fileInputState, setFileInputState] = useState("");
   const [selectedFile, setSelectedFile] = useState("");

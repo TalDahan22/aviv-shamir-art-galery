@@ -32,7 +32,7 @@ const ProductDetails = () => {
           height="500"
         ></CardMedia>
         <CardContent>
-          <div className={styles.productInfo}>
+          <div className={styles.productInfo} >
             <h5>{showProduct.title}</h5>
             <h6>{showProduct.price}</h6>
             <h6>{showProduct.description}</h6>

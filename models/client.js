@@ -14,10 +14,10 @@ const client = new Schema({
     type: String,
     required: true,
   },
-  birthday: {
-    type: Date,
-    default: Date.now,
-  },
+  // birthday: {
+  //   type: Date,
+  //   default: Date.now,
+  // },
 
 });
 

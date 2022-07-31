@@ -6,7 +6,7 @@ import styles from "../../styles/Form.module.css";
 import { useToast } from "../../hooks/useToast";
 import Toast from "../toast/ToastContainer";
 
-export default function Form() {
+export default function Form({ addOrder }) {
   const toast = useToast();
   const {
     register,
@@ -16,6 +16,7 @@ export default function Form() {
   } = useForm();
   const router = useRouter();
   async function onSubmitForm(values) {
+    addOrder();
     let config = {
       method: "POST",
       url: `${process.env.NEXT_PUBLIC_API_URL}/api/clientUser`,
@@ -120,6 +121,10 @@ export default function Form() {
               placeholder="adress"
             />
           </div>
+        <div>
+          <button>Submit</button>
+        </div>
+
         </form>
       </div>
     </div>

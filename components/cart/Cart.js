@@ -2,22 +2,23 @@ import { Drawer } from "@mui/material";
 import { CardContent, CardHeader, CardMedia, Grid } from "@mui/material";
 import styles from "../../styles/Cart.module.css";
 import Card from "@mui/material/Card";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import ProductContext from "../../pages/context/ProductContext";
 import clientUser from "../../pages/api/clientUser";
-import AddRoundedIcon from '@mui/icons-material/AddRounded';
-import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded';
+import AddRoundedIcon from "@mui/icons-material/AddRounded";
+import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
 import Modal from "../modal/Modal";
+import client from "../../models/client";
+import Form from "../form/Form";
 function Cart({ showDrawer, setShowDrawer }) {
-  const { cartArray, removeProduct} = useContext(ProductContext);
-  console.log(cartArray);
-
-  // {
-  //   products.filter((product) => product._id === id);
-  // }
+  const { cartArray, removeProduct } = useContext(ProductContext);
+  const [showModal, setShowModal] = useState(false);
+  console.log(cartArray, "cart");
+  console.log("client", clientUser);
 
   function addOrder() {
-   console.log('clientUser',clientUser);
+    console.log("showmodal", showModal);
+    console.log("clientUser", clientUser);
     const newOrder = {
       method: "POST",
 
@@ -25,14 +26,13 @@ function Cart({ showDrawer, setShowDrawer }) {
 
       body: JSON.stringify({
         products: cartArray,
-        client: clientUser,
+        client: {},
         date: new Date(),
       }),
     };
-
-    fetch("api/postorder", newOrder, clientUser)
-      .then((res) => res.json())
-      .then((orderFromDB) => console.log("orderFromDB:", orderFromDB));
+    // fetch("api/postorder", newOrder, clientUser)
+    //   .then((res) => res.json())
+    //   .then((orderFromDB) => console.log("orderFromDB:", orderFromDB));
   }
 
   return (
@@ -50,11 +50,13 @@ function Cart({ showDrawer, setShowDrawer }) {
           flexDirection: "column",
         }}
       >
-       <button onClick={() =>addOrder()}>ADD ORDER
-        </button>
-       <Modal/>
-      
-     
+        <button onClick={() => setShowModal(true)}>ADD ORDER</button>
+        {showModal && (
+          <Modal showModal={showModal} setShowModal={setShowModal}>
+            <Form addOrder={addOrder} />
+          </Modal>
+        )}
+
         {cartArray.map((product) => (
           <Card key={product._id} sx={{ maxWidth: 360 }}>
             <CardMedia
@@ -69,12 +71,11 @@ function Cart({ showDrawer, setShowDrawer }) {
                 <h6>{product.category}</h6>
               </div>
             </CardContent>
-           <AddRoundedIcon>
-            
-              onClick={() => {
+            <AddRoundedIcon>
+              onClick=
+              {() => {
                 updateCart(product._id);
               }}
-            
               add to cart
             </AddRoundedIcon>
             <RemoveRoundedIcon

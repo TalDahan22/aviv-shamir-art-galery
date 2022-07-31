@@ -1,15 +1,14 @@
 import connectDB from "../../middleware/mongodb";
-import Client from "../../models/Client";
+import Client from "../../models/client";
 
 const postClientToDB = async (req, res) => {
   if (req.method === "POST") {
-    const { name, email,password, creditCard } = req.body;
+    const { name, email, password } = req.body;
     try {
       const clientUser = new Client({
         name,
         email,
-        password,
-        creditCard
+        adress,
       });
 
       const client = await clientUser.save();

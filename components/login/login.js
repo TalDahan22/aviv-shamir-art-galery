@@ -6,15 +6,18 @@ export default function Login() {
  console.log(session);
   if (session) {
     return (
-     <>
-        Signed in as {session.user.email} <br />
+     
+     <span style={{color :"white"}}>
+       
+        Signed in as {session.user.email}
         <GoogleIcon onClick={() => signOut()}>Sign out</GoogleIcon>
-      </>
+      </span>
+       
     )
   }
   return (
     <>
-      Not signed in <br />
+      {/* Not signed in <br /> */}
       <GoogleIcon onClick={() => signIn()}>Sign in</GoogleIcon>
     </>
   )
