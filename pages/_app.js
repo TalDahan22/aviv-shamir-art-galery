@@ -3,7 +3,7 @@ import Header from "../components/header/Header";
 import "../styles/globals.css";
 import "@glidejs/glide/src/assets/sass/glide.core.scss";
 import "@glidejs/glide/src/assets/sass/glide.theme.scss";
-import ProductContext from "./context/ProductContext";
+import ProductContext from "../context/ProductContext";
 import { useContext, useEffect, useState } from "react";
 import Cart from "../components/cart/Cart";
 import { SessionProvider } from "next-auth/react";
@@ -40,7 +40,6 @@ function Layout({ children }) {
         : orginProducts.filter((product) => product.category === category)
     );
   };
-
 
   async function changeProductsHolder(value) {
     if (value === "allcollections") changeProducts("All Collections");
@@ -89,7 +88,6 @@ function Layout({ children }) {
         cartArray,
         setCartArray,
         removeProduct,
-      
       }}
     >
       {children}

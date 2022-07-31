@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import { CardContent, CardHeader, CardMedia, Grid } from "@mui/material";
 import styles from  "../../styles/Product.module.css";
 import { useRouter } from "next/router";
-import ProductContext from "../context/ProductContext";
+import ProductContext from "../../context/ProductContext";
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 const ProductDetails = () => {
 
