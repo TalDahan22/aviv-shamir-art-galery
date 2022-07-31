@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import Product from "../../../components/product/Product";
 import styles from "../../../styles/collection.module.css";
-import ProductContext from "../../context/ProductContext";
+import ProductContext from "../../../context/ProductContext";
 import { useRouter } from "next/router";
 
 const FilterdCollections = () => {

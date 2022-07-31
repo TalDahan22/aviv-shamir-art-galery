@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Product from "../../components/product/Product";
 import styles from "../../styles/collection.module.css";
-import ProductContext from "../context/ProductContext";
+import ProductContext from "../../context/ProductContext";
 
 const Collections = () => {
   const { products } = useContext(ProductContext);
